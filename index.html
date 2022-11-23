@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Cueva del Insecto</title>
+
+    <meta name="title" content="pablomederos.dev" />
+    <meta
+      name="description"
+      content="Código para el canal de YouTube: La Cueva del Insecto."
+    />
+    <meta
+      name="keywords"
+      content="pablo, mederos, fullstack, developer, code, software, coding, android, flutter, javascript, vue, freelance, ti, tech, hardware, node, docker, git, telegram, instagram, twitter, linkedin, lacuevadelinsecto, lacueva, software"
+    />
+    <meta name="author" content="Pablo Mederos" />
+    <meta name="publisher" content="Pablo Mederos" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@pgmederos" />
+    <meta name="twitter:title" content="Pablo Mederos" />
+    <meta name="twitter:description" content="Pablo Mederos." />
+    <meta name="twitter:creator" content="@pgmederos" />
+    <meta name="twitter:image" content="./site/assets/img/logo.webp" />
+    <meta name="og:title" content="Pablo Mederos" />
+    <meta name="og:type" content="website" />
+    <meta name="og:url" content="https://www.pablomederos.dev" />
+    <meta name="og:image" content="/site/assets/img/logo.webp" />
+    <meta name="og:description" content="Pablo Mederos, FullStack Developer." />
+    <meta name="og:site_name" content="Pablo Mederos" />
+    <link
+      rel="canonical"
+      href="https://pablomederos.github.io/lacuevadelinsecto/"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./site/assets/img/icons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./site/assets/img/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./site/assets/img/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./site/assets/img/icons/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="./site/assets/img/icons/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./site/src/css/index.css" />
+
+    <script>
+      var scrollPosition = 0;
+      window.addEventListener("load", function () {
+        let footer;
+
+        while (!footer) {
+          footer = document.querySelector("footer");
+        }
+        if (!footer.classList.contains("show")) footer.classList.add("show");
+      });
+
+      function OnScroll() {
+        const body = document.querySelector(".body");
+        const footer = document.querySelector("footer");
+
+        const currentScroll = body.scrollTop;
+        
+        if (currentScroll > 200) {
+          if (currentScroll < scrollPosition && currentScroll < 330) {
+            if (!footer.classList.contains("show"))
+              footer.classList.add("show");
+          } else {
+            if (footer.classList.contains("show"))
+              footer.classList.remove("show");
+              body.scrollTo = 220
+          }
+        }
+
+        scrollPosition = currentScroll;
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand mb-0 h1" href="#">
+          <img
+            src="./site/assets/img/logo.webp"
+            alt=""
+            class="d-inline-block align-text-top"
+          />La Cueva del Insecto</a
+        >
+        <div>
+          <form
+            action="https://www.paypal.com/donate"
+            method="post"
+            target="_top"
+          >
+            <input
+              type="hidden"
+              name="hosted_button_id"
+              value="KN4DG88864454"
+            />
+            <input
+              type="image"
+              src="https://pics.paypal.com/00/s/ZWM2YTkxM2ItNjk3NC00MzBhLTg5YTgtMGYyNDc1NjFlNWY4/file.PNG"
+              border="0"
+              name="submit"
+              title="Invítame un café!"
+              data-bs-toggle="tooltip"
+              alt="Donate with PayPal button"
+              class="paypal-btn"
+            />
+            <img
+              alt=""
+              border="0"
+              src="https://www.paypal.com/en_UY/i/scr/pixel.gif"
+              width="1"
+              height="1"
+            />
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="content">
+      <section class="body" onscroll="OnScroll()">
+        <div id="app">
+          <div class="social" v-if="repos && repos['SocialMedia']">
+            <template v-for="sm in repos['SocialMedia']">
+              <div>
+                <a :href="sm.url" target="_blank">
+                  <img :src="sm.icon" :alt="sm.name" />
+                </a>
+              </div>
+            </template>
+          </div>
+
+          <div class="repos" v-if="repos" id="accordionCategories">
+            <h2 class="repo-title">{{repos['DesignPatterns'].name}}</h2>
+            <h5 class="category-title">Categorías:</h5>
+            <template
+              id="accordionRepos"
+              v-for="(content, i) in repos['DesignPatterns']['content']"
+            >
+              <div class="accordion-item">
+                <h2 class="accordion-header" :id="`heading-category-${i}`">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    :data-bs-target="`#collapse-category-${i}`"
+                    aria-expanded="false"
+                    :aria-controls="`collapse-category-${i}`"
+                  >
+                    {{content.category}}
+                  </button>
+                </h2>
+                <div
+                  :id="`collapse-category-${i}`"
+                  class="accordion-collapse collapse"
+                  :aria-labelledby="`heading-category-${i}`"
+                  data-bs-parent="#accordionCategories"
+                >
+                  <div class="accordion-body">
+                    <div class="accordion" id="accordionContent">
+                      <template v-for="(pattern, j) in content['list']">
+                        <div class="accordion-item">
+                          <h2
+                            class="accordion-header"
+                            :id="`heading-content-${j}`"
+                          >
+                            <button
+                              class="accordion-button"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              :data-bs-target="`#collapse-content-${j}`"
+                              aria-expanded="false"
+                              :aria-controls="`collapse-content-${j}`"
+                            >
+                              {{pattern.name}}
+                            </button>
+                          </h2>
+                          <div
+                            :id="`collapse-content-${j}`"
+                            class="accordion-collapse collapse"
+                            :aria-labelledby="`heading-content-${j}`"
+                            data-bs-parent="#accordionContent"
+                          >
+                            <div class="accordion-body">
+                              <strong>Urls disponibles:</strong>
+                              <br />
+                              <code
+                                >Hay {{pattern.urls.length}} ejemplos
+                                disponibles</code
+                              >
+                              <ul>
+                                <template v-for="(url, k) in pattern.urls">
+                                  <li>
+                                    <a
+                                      :href="`${repos['DesignPatterns'].repoUrl}${url}`"
+                                      target="_blank"
+                                      >Ejemplo {{k+1}}</a
+                                    >
+                                  </li>
+                                </template>
+                              </ul>
+                              <div class="videos" v-if="pattern.videos && pattern.videos.length">
+                                <code>Ejemplo en video:</code>
+
+                                <template v-for="(video, k) in pattern.videos">
+                                  <div>
+                                    <iframe
+                                      class="yt-video"
+                                      :src="video"
+                                      title="YouTube video player"
+                                      frameborder="0"
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                      allowfullscreen
+                                    ></iframe>
+                                  </div>
+                                </template>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <footer class="bg-dark text-center text-white">
+        <section class="">
+          <!--Grid row-->
+          <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">La Cueva del Insecto ™️</h5>
+            </div>
+          </div>
+        </section>
+        <section class="mb-4">
+          <p style="font-size: small">
+            Esta web y todo su material son recopilaciones de fuentes originales
+            de <a href="https://pablomederos.dev">Pablo Gabriel Mederos</a>, y
+            del canal de
+            <a href="https://youtube.com/@lacuevadelinsecto"
+              >YouTube: La Cueva del Insecto</a
+            >
+          </p>
+        </section>
+      </footer>
+    </div>
+
+    <script>
+      var tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      );
+      _ = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+    </script>
+    <script src="./site/src/js/index.js" type="module"></script>
+  </body>
+</html>
