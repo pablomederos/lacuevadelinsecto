@@ -73,38 +73,6 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="./site/src/css/index.css" />
-
-    <script>
-      var scrollPosition = 0;
-      window.addEventListener("load", function () {
-        let footer;
-
-        while (!footer) {
-          footer = document.querySelector("footer");
-        }
-        if (!footer.classList.contains("show")) footer.classList.add("show");
-      });
-
-      function OnScroll() {
-        const body = document.querySelector(".body");
-        const footer = document.querySelector("footer");
-
-        const currentScroll = body.scrollTop;
-        
-        if (currentScroll > 200) {
-          if (currentScroll < scrollPosition && currentScroll < 330) {
-            if (!footer.classList.contains("show"))
-              footer.classList.add("show");
-          } else {
-            if (footer.classList.contains("show"))
-              footer.classList.remove("show");
-              body.scrollTo = 220
-          }
-        }
-
-        scrollPosition = currentScroll;
-      }
-    </script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -150,8 +118,8 @@
     </nav>
 
     <div class="content">
-      <section class="body" onscroll="OnScroll()">
-        <div id="app">
+      <section class="appBody">
+        <main id="app">
           <div class="social" v-if="repos && repos['SocialMedia']">
             <template v-for="sm in repos['SocialMedia']">
               <div>
@@ -170,48 +138,48 @@
               v-for="(content, i) in repos['DesignPatterns']['content']"
             >
               <div class="accordion-item">
-                <h2 class="accordion-header" :id="`heading-category-${i}`">
+                <h2 class="accordion-header" :id="`heading-category-${content.category.replaceAll(' ', '_')}-${i}`">
                   <button
                     class="accordion-button"
                     type="button"
                     data-bs-toggle="collapse"
-                    :data-bs-target="`#collapse-category-${i}`"
+                    :data-bs-target="`#collapse-category-${content.category.replaceAll(' ', '_')}-${i}`"
                     aria-expanded="false"
-                    :aria-controls="`collapse-category-${i}`"
+                    :aria-controls="`collapse-category-${content.category.replaceAll(' ', '_')}-${i}`"
                   >
                     {{content.category}}
                   </button>
                 </h2>
                 <div
-                  :id="`collapse-category-${i}`"
+                  :id="`collapse-category-${content.category.replaceAll(' ', '_')}-${i}`"
                   class="accordion-collapse collapse"
-                  :aria-labelledby="`heading-category-${i}`"
+                  :aria-labelledby="`heading-category-${content.category.replaceAll(' ', '_')}-${i}`"
                   data-bs-parent="#accordionCategories"
                 >
                   <div class="accordion-body">
-                    <div class="accordion" id="accordionContent">
+                    <div class="accordion" :id="`accordionContent-${content.category.replaceAll(' ', '_')}`">
                       <template v-for="(pattern, j) in content['list']">
                         <div class="accordion-item">
                           <h2
                             class="accordion-header"
-                            :id="`heading-content-${j}`"
+                            :id="`heading-content-${content.category.replaceAll(' ', '_')}-${j}`"
                           >
                             <button
                               class="accordion-button"
                               type="button"
                               data-bs-toggle="collapse"
-                              :data-bs-target="`#collapse-content-${j}`"
+                              :data-bs-target="`#collapse-content-${content.category.replaceAll(' ', '_')}-${j}`"
                               aria-expanded="false"
-                              :aria-controls="`collapse-content-${j}`"
+                              :aria-controls="`collapse-content-${content.category.replaceAll(' ', '_')}-${j}`"
                             >
                               {{pattern.name}}
                             </button>
                           </h2>
                           <div
-                            :id="`collapse-content-${j}`"
+                            :id="`collapse-content-${content.category.replaceAll(' ', '_')}-${j}`"
                             class="accordion-collapse collapse"
-                            :aria-labelledby="`heading-content-${j}`"
-                            data-bs-parent="#accordionContent"
+                            :aria-labelledby="`heading-content-${content.category.replaceAll(' ', '_')}-${j}`"
+                            :data-bs-parent="`#accordionContent-${content.category.replaceAll(' ', '_')}`"
                           >
                             <div class="accordion-body">
                               <strong>Urls disponibles:</strong>
@@ -257,31 +225,30 @@
               </div>
             </template>
           </div>
+        </main>
+      </section>
+    </div>
+
+    <footer class="bg-dark text-center text-white show">
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">La Cueva del Insecto ™️</h5>
+          </div>
         </div>
       </section>
-
-      <footer class="bg-dark text-center text-white">
-        <section class="">
-          <!--Grid row-->
-          <div class="row">
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">La Cueva del Insecto ™️</h5>
-            </div>
-          </div>
-        </section>
-        <section class="mb-4">
-          <p style="font-size: small">
-            Esta web y todo su material son recopilaciones de fuentes originales
-            de <a href="https://pablomederos.dev">Pablo Gabriel Mederos</a>, y
-            del canal de
-            <a href="https://youtube.com/@lacuevadelinsecto"
-              >YouTube: La Cueva del Insecto</a
-            >
-          </p>
-        </section>
-      </footer>
-    </div>
+      <section class="mb-4">
+        <p style="font-size: small">
+          Esta web y todo su material son recopilaciones de fuentes originales
+          de <a href="https://pablomederos.dev">Pablo Gabriel Mederos</a>, y
+          del canal de
+          <a href="https://youtube.com/@lacuevadelinsecto"
+            >YouTube: La Cueva del Insecto</a>
+        </p>
+      </section>
+    </footer>
 
     <script>
       var tooltipTriggerList = [].slice.call(
