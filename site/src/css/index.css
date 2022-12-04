@@ -23,7 +23,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding-bottom: 10em;
-  margin: auto 10px;
+  margin: 0 10px;
 }
 
 .content {
