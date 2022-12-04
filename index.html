@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <title>La Cueva del Insecto</title>
 
-    <meta name="title" content="pablomederos.dev" />
+    <meta name="title" content="pablomederos.dev" >
     <meta
       name="description"
       content="Código para el canal de YouTube: La Cueva del Insecto."
-    />
+    >
     <meta
       name="keywords"
       content="pablo, mederos, fullstack, developer, code, software, coding, android, flutter, javascript, vue, freelance, ti, tech, hardware, node, docker, git, telegram, instagram, twitter, linkedin, lacuevadelinsecto, lacueva, software"
-    />
-    <meta name="author" content="Pablo Mederos" />
-    <meta name="publisher" content="Pablo Mederos" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@pgmederos" />
-    <meta name="twitter:title" content="Pablo Mederos" />
-    <meta name="twitter:description" content="Pablo Mederos." />
-    <meta name="twitter:creator" content="@pgmederos" />
-    <meta name="twitter:image" content="./site/assets/img/logo.webp" />
-    <meta name="og:title" content="Pablo Mederos" />
-    <meta name="og:type" content="website" />
-    <meta name="og:url" content="https://www.pablomederos.dev" />
-    <meta name="og:image" content="/site/assets/img/logo.webp" />
-    <meta name="og:description" content="Pablo Mederos, FullStack Developer." />
-    <meta name="og:site_name" content="Pablo Mederos" />
+    >
+    <meta name="author" content="Pablo Mederos" >
+    <meta name="publisher" content="Pablo Mederos" >
+    <meta name="twitter:card" content="summary" >
+    <meta name="twitter:site" content="@pgmederos" >
+    <meta name="twitter:title" content="Pablo Mederos" >
+    <meta name="twitter:description" content="Pablo Mederos." >
+    <meta name="twitter:creator" content="@pgmederos" >
+    <meta name="twitter:image" content="./site/assets/img/logo.webp" >
+    <meta name="og:title" content="La Cueva del Insecto - Gabriel Mederos" >
+    <meta name="og:type" content="website" >
+    <meta
+      name="og:url"
+      content="https://pablomederos.github.io/lacuevadelinsecto"
+    >
+    <meta property="og:image" content="./site/assets/img/logo.webp" >
+    <meta
+      name="og:description"
+      content="Canal de YouTube para aprender desarrollo de software."
+    >
+    <meta name="og:site_name" content="La Cueva del Insecto" >
+    <meta name="msapplication-TileColor" content="#da532c" >
+    <meta name="theme-color" content="#ffffff" >
     <link
       rel="canonical"
       href="https://pablomederos.github.io/lacuevadelinsecto/"
     />
+    <link as="image" rel="preload" href="./site/assets/img/logo.webp" fetchpriority="high">
 
     <link
       rel="apple-touch-icon"
@@ -56,9 +65,7 @@
       rel="mask-icon"
       href="./site/assets/img/icons/safari-pinned-tab.svg"
       color="#5bbad5"
-    />
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta name="theme-color" content="#ffffff" />
+    >
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <link
@@ -138,7 +145,10 @@
               v-for="(content, i) in repos['DesignPatterns']['content']"
             >
               <div class="accordion-item">
-                <h2 class="accordion-header" :id="`heading-category-${content.category.replaceAll(' ', '_')}-${i}`">
+                <h2
+                  class="accordion-header"
+                  :id="`heading-category-${content.category.replaceAll(' ', '_')}-${i}`"
+                >
                   <button
                     class="accordion-button"
                     type="button"
@@ -157,7 +167,10 @@
                   data-bs-parent="#accordionCategories"
                 >
                   <div class="accordion-body">
-                    <div class="accordion" :id="`accordionContent-${content.category.replaceAll(' ', '_')}`">
+                    <div
+                      class="accordion"
+                      :id="`accordionContent-${content.category.replaceAll(' ', '_')}`"
+                    >
                       <template v-for="(pattern, j) in content['list']">
                         <div class="accordion-item">
                           <h2
@@ -199,7 +212,10 @@
                                   </li>
                                 </template>
                               </ul>
-                              <div class="videos" v-if="pattern.videos && pattern.videos.length">
+                              <div
+                                class="videos"
+                                v-if="pattern.videos && pattern.videos.length"
+                              >
                                 <code>Ejemplo en video:</code>
 
                                 <template v-for="(video, k) in pattern.videos">
@@ -242,10 +258,11 @@
       <section class="mb-4">
         <p style="font-size: small">
           Esta web y todo su material son recopilaciones de fuentes originales
-          de <a href="https://pablomederos.dev">Pablo Gabriel Mederos</a>, y
-          del canal de
+          de <a href="https://pablomederos.dev">Pablo Gabriel Mederos</a>, y del
+          canal de
           <a href="https://youtube.com/@lacuevadelinsecto"
-            >YouTube: La Cueva del Insecto</a>
+            >YouTube: La Cueva del Insecto</a
+          >
         </p>
       </section>
     </footer>
