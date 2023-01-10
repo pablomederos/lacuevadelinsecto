@@ -102,10 +102,13 @@ h5.category-title {
 
 .social {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 2em;
+  gap: 48px;
+  width: calc(5 * 48px);
+  flex-flow: wrap;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 .social > div {
@@ -114,10 +117,10 @@ h5.category-title {
 
 .social a,
 .social img {
-  max-width: inherit;
+  max-width: 48px;
 }
 
-.social img:hover  {
+.social img:hover {
   filter: brightness(50%);
 }
 
