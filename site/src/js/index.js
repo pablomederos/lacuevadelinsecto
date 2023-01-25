@@ -9,7 +9,7 @@ createApp({
   },
   methods: {
     getRepoData() {
-        fetch(this.routesPath)
+        fetch(this.routesPath, { cache: "no-store" })
         .then(response => response.json())
         .then(data => this.repos = data)
         .then( _ => 
